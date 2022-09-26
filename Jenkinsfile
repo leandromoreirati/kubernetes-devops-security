@@ -39,7 +39,7 @@ pipeline {
         sh '''
           mvn sonar:sonar \
           -Dsonar.projectKey=devsecops \
-          -Dsonar.host.url=http://3.239.128.152:9000
+          -Dsonar.host.url=http://3.239.128.152:9000 \
           -Dsonar.login=84337d43940cb6aca53acbab4441b31587de997a
           '''
         }

@@ -10,7 +10,7 @@ pipeline {
       }
     }
 
-    stage('Unit Tests - JUnit and JaCoCo') {
+/*     stage('Unit Tests - JUnit and JaCoCo') {
       steps {
         sh "mvn test"
       }
@@ -20,7 +20,7 @@ pipeline {
           jacoco execPattern: 'target/jacoco.exec'
         }
       }
-    }
+    } */
 
     stage('Mutation Tests - PIT') {
       steps {

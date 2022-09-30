@@ -33,7 +33,7 @@ pipeline {
       }
     }
 
-/*     stage('SonarQube - SAST') {
+    stage('SonarQube - SAST') {
       steps {
         withSonarQubeEnv('SonarQube') {
         sh '''
@@ -48,7 +48,7 @@ pipeline {
           }
         }
       }
-    } */
+    }
 
     stage('Vulnerability Scan - Docker ') {
       steps {

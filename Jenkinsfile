@@ -62,11 +62,11 @@ pipeline {
       steps {
         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
           sh 'printenv'
-          sh 'docker build -t leandromoreirajfa/numeric-app:""$GIT_COMMIT"" .'
+          sh 'sudo docker build -t leandromoreirajfa/numeric-app:""$GIT_COMMIT"" .'
           sh 'docker push leandromoreirajfa/numeric-app:""$GIT_COMMIT""'
         }
       }
-    }    
+    }
 
     stage('Kubernetes Deployment - DEV') {
       steps {

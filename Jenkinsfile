@@ -39,7 +39,7 @@ pipeline {
       }
     }
 
-    stage('Vulnerability Scan - Docker ') {
+/*     stage('Vulnerability Scan - Docker ') {
       steps {
         sh "mvn dependency-check:check"
       }
@@ -53,7 +53,7 @@ pipeline {
           sh 'docker push leandromoreirajfa/numeric-app:""$GIT_COMMIT""'
         }
       }
-    }
+    } */
 
     stage('Kubernetes Deployment - DEV') {
       steps {

@@ -28,7 +28,7 @@ pipeline {
         sh '''
           mvn sonar:sonar \
           -Dsonar.projectKey=devsecops \
-          -Dsonar.host.url=http://44.203.249.231:9000
+          -Dsonar.host.url=http://44.192.126.112:9000
           '''
         }
         timeout(time: 2, unit: 'MINUTES') {

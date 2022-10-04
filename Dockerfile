@@ -6,7 +6,7 @@ FROM openjdk:20-ea-17-jdk-slim-buster
 EXPOSE 8080
 RUN set -x && \
     addgroup -S pipeline && adduser -S k8s-pipeline -G pipeline && \
-    apt-gte update && \
+    apt-get update && \
     apt-get upgrade -y
 COPY --from=build ${JAR_FILE} /home/k8s-pipeline/app.jar
 USER k8s-pipeline

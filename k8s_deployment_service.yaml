@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: leandromoreirajfa/numeric-app
+      - image: leandromoreirajfa/numeric-app:${GIT_COMMIT}
         name: devsecops-container
         securityContext:
           runAsNonRoot: true

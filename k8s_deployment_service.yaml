@@ -16,7 +16,7 @@ spec:
         app: devsecops
     spec:
       containers:
-      - image: replace
+      - image: leandromoreirajfa/numeric-app
         name: devsecops-container
         securityContext:
           runAsNonRoot: true

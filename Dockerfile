@@ -1,6 +1,6 @@
 FROM openjdk:20-ea-17-jdk-slim-buster as build
 ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} /home/k8s-pipeline/app.jar
+COPY ${JAR_FILE} /tmp/app.jar
 
 FROM openjdk:20-ea-17-jdk-slim-buster
 EXPOSE 8080

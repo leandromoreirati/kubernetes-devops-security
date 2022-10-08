@@ -5,8 +5,8 @@ pipeline {
     deploymentName = "devsecops"
     containerName = "devsecops-container"
     serviceName = "devsecops-svc"
-    imageName = "siddharth67/numeric-app:${GIT_COMMIT}"
-    applicationURL = "http://devsecops-demo.eastus.cloudapp.azure.com/"
+    imageName = "leandromoreira/numeric-app:${GIT_COMMIT}"
+    applicationURL = "http://44.199.254.217:8080/"
     applicationURI = "/increment/99"
   }
 
@@ -88,7 +88,7 @@ pipeline {
         }
       }
     } */
-    
+
     stage('K8S Deployment - DEV') {
       steps {
         parallel(

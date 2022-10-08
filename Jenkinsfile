@@ -7,7 +7,7 @@ pipeline {
     serviceName = "devsecops-svc"
     imageName = "leandromoreirajfa/numeric-app:${GIT_COMMIT}"
     applicationURL = "http://44.199.254.217"
-    applicationURI = "/"
+    applicationURI = "/increment/99"
   }
 
   stages {
@@ -113,7 +113,7 @@ pipeline {
       }
     }
 
-/*     stage('Integration Tests - DEV') {
+    stage('Integration Tests - DEV') {
       steps {
         script {
           try {
@@ -128,7 +128,7 @@ pipeline {
           }
         }
       }
-    } */
+    }
 
     stage('OWASP ZAP - DAST') {
       steps {

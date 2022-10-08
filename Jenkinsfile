@@ -6,8 +6,8 @@ pipeline {
     containerName = "devsecops-container"
     serviceName = "devsecops-svc"
     imageName = "leandromoreirajfa/numeric-app:${GIT_COMMIT}"
-    applicationURL = "http://44.199.254.217:8080/"
-    applicationURI = "/increment/99"
+    applicationURL = "http://44.199.254.217"
+    applicationURI = "/"
   }
 
   stages {
@@ -82,9 +82,6 @@ pipeline {
           },
           "Kubesec Scan": {
             sh "bash kubesec-scan.sh"
-          },
-          "Trivy Scan": {
-            sh "bash trivy-k8s-scan.sh"
           }
         )
       }

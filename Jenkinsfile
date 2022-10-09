@@ -12,7 +12,7 @@ pipeline {
     applicationURI = "/increment/99"
   }
 
-/*   stages {
+  stages {
 
      stage('Build Artifact - Maven') {
       steps {
@@ -139,12 +139,20 @@ pipeline {
         }
       }
     } 
-  } */
+  }
 
     stages {
       stage('Testing Slack') {
         steps {
           sh 'exit 1'
+        }
+      }
+    }
+
+    stage('Prompte to PROD?') {
+      steps {
+        timeout(time: 2, unit: 'DAYS') {
+          input 'Do you want to Approve the Deployment to Production Environment/Namespace?'
         }
       }
     }

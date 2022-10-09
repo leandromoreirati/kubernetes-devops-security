@@ -12,9 +12,9 @@ pipeline {
     applicationURI = "/increment/99"
   }
 
-  stages {
+/*   stages {
 
-     /*stage('Build Artifact - Maven') {
+     stage('Build Artifact - Maven') {
       steps {
         sh "mvn clean package -DskipTests=true"
         archive 'target/*.jar'
@@ -138,17 +138,16 @@ pipeline {
           sh 'bash -x zap.sh'
         }
       }
-    } */
+    } 
+  } */
 
-    
+    stages {
       stage('Testing Slack') {
         steps {
           sh 'exit 1'
         }
       }
-    
-
-  }
+    }
 
   post {
     always {

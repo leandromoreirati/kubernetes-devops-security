@@ -138,15 +138,6 @@ pipeline {
           sh 'bash -x zap.sh'
         }
       }
-    } 
-  }
-
-    stages {
-      stage('Testing Slack') {
-        steps {
-          sh 'exit 1'
-        }
-      }
     }
 
     stage('Prompte to PROD?') {
@@ -156,6 +147,13 @@ pipeline {
         }
       }
     }
+
+    stage('Testing Slack') {
+      steps {
+        sh 'exit 1'
+      }
+    }
+  }
 
   post {
     always {

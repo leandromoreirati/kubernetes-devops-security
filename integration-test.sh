@@ -2,7 +2,7 @@
 
 #integration-test.sh
 
-sleep 60s
+sleep 90s
 
 PORT=$(kubectl -n default get svc ${serviceName} -o json | jq .spec.ports[].nodePort)
 

@@ -9,3 +9,4 @@ if [[ "$total_fail" -ne 0 ]];
                 exit 1;
         else
                 echo "CIS Benchmark Passed for MASTER - 1.2.7, 1.2.8, 1.2.9"
+fi;

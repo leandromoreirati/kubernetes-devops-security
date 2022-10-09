@@ -115,7 +115,7 @@ pipeline {
       }
     }
 
-/*     stage('Integration Tests - DEV') {
+    stage('Integration Tests - DEV') {
       steps {
         script {
           try {
@@ -130,7 +130,7 @@ pipeline {
           }
         }
       }
-    } */
+    }
 
     stage('OWASP ZAP - DAST') {
       steps {

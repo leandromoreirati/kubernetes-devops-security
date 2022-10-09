@@ -1,3 +1,5 @@
+@Library('slack') _
+
 pipeline {
   agent any
 
@@ -12,7 +14,7 @@ pipeline {
 
   stages {
 
-    stage('Build Artifact - Maven') {
+/*     stage('Build Artifact - Maven') {
       steps {
         sh "mvn clean package -DskipTests=true"
         archive 'target/*.jar'
@@ -87,14 +89,14 @@ pipeline {
       }
     }
 
-/*     stage('Kubernetes Deployment - DEV') {
+    stage('Kubernetes Deployment - DEV') {
       steps {
         withKubeConfig([credentialsId: 'kubeconfig']) {
           sh "sed -i 's#replace#leandromoreirajfa/numeric-app:${GIT_COMMIT}#g' k8s_deployment_service.yaml"
           sh "kubectl apply -f k8s_deployment_service.yaml"
         }
       }
-    } */
+    }
 
     stage('K8S Deployment - DEV') {
       steps {
@@ -136,16 +138,27 @@ pipeline {
           sh 'bash -x zap.sh'
         }
       }
+    } */
+
+    stages {
+      stage('Testing Slack') {
+        steps {
+          sh 'exit 1'
+        }
+      }
     }
   }
 
   post {
     always {
-      junit 'target/surefire-reports/*.xml'
-      jacoco execPattern: 'target/jacoco.exec'
-      pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
-      dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
-      publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'OWASP ZAP HTML Report', reportTitles: 'OWASP ZAP HTML Report'])
+      //junit 'target/surefire-reports/*.xml'
+      //jacoco execPattern: 'target/jacoco.exec'
+      //pitmutation mutationStatsFile: '**/target/pit-reports/**/mutations.xml'
+      //dependencyCheckPublisher pattern: 'target/dependency-check-report.xml'
+      //publishHTML([allowMissing: false, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 'owasp-zap-report', reportFiles: 'zap_report.html', reportName: 'OWASP ZAP HTML Report', reportTitles: 'OWASP ZAP HTML Report'])
+
+      // Use sendNotifications.groovy from shared library and provide current build result as parameter    
+      sendNotification currentBuild.result
     }
 
     // success {

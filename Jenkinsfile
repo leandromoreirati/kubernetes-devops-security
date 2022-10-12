@@ -8,7 +8,7 @@ pipeline {
     containerName = "devsecops-container"
     serviceName = "devsecops-svc"
     imageName = "leandromoreirajfa/numeric-app:${GIT_COMMIT}"
-    applicationURL = "http://3.91.174.100"
+    applicationURL = "http://44.193.205.230"
     applicationURI = "/increment/99"
   }
 
@@ -202,13 +202,13 @@ pipeline {
         }
       }
     }
-
+/* 
     stage('Testing Slack') {
       steps {
         sh 'exit 0'
       }
     }
-  }
+  } */
 
   post {
     always {
@@ -231,8 +231,13 @@ pipeline {
 
     }
 
-    // failure {
-
-    // }
+    failure {
+      script {
+        //Fetch information about  failed stage
+        def failedStages = getFailedStages(currentBuild)
+        env.failedStage = failedStages.failedStageName
+        env.emoji = ":x: :red_circle: :sos:"
+        sendNotification currentBuild.result
+    }
   }
 }

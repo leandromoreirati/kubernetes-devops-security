@@ -14,7 +14,7 @@ pipeline {
 
   stages {
 
-     stage('Build Artifact - Maven') {
+/*      stage('Build Artifact - Maven') {
       steps {
         sh "mvn clean package -DskipTests=true"
         archive 'target/*.jar'
@@ -201,13 +201,13 @@ pipeline {
           }
         }
       }
-    }
- /* 
+    } */
+ 
     stage('Testing Slack') {
       steps {
-        sh 'exit 0'
+        sh 'exit 1'
       }
-    } */
+    }
   }
 
   post {
@@ -222,7 +222,7 @@ pipeline {
       sendNotification currentBuild.result
     }
 
-    success {
+/*     success {
       script {
         env.failedStage= "none"
         env.emoji = ":white_check_mark: :tada: :thumbsup_all:"
@@ -238,6 +238,6 @@ pipeline {
         env.emoji = ":x: :red_circle: :sos:"
         sendNotification currentBuild.result
       }
-    }
+    } */
   }
 }

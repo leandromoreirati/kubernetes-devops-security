@@ -202,13 +202,13 @@ pipeline {
         }
       }
     }
-/* 
+ /* 
     stage('Testing Slack') {
       steps {
         sh 'exit 0'
       }
-    }
-  } */
+    } */
+  }
 
   post {
     always {
@@ -228,7 +228,6 @@ pipeline {
         env.emoji = ":white_check_mark: :tada: :thumbsup_all:"
         sendNotification currentBuild.result
       }
-
     }
 
     failure {
@@ -238,6 +237,7 @@ pipeline {
         env.failedStage = failedStages.failedStageName
         env.emoji = ":x: :red_circle: :sos:"
         sendNotification currentBuild.result
+      }
     }
   }
 }

@@ -222,9 +222,14 @@ pipeline {
       sendNotification currentBuild.result
     }
 
-    // success {
+    success {
+      script {
+        env.failedStage= "none"
+        env.emoji = ":white_check_mark: :tada: :thumbsup_all:"
+        sendNotification currentBuild.result
+      }
 
-    // }
+    }
 
     // failure {
 
